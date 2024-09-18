@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { Button, Card, Input, Label } from '../components/ui'
+import { Button, Card, Input, Label, Container } from '../components/ui'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../context/AuthContext'
 import axios from 'axios'
@@ -19,12 +19,12 @@ function LoginPage() {
     })
 
     return (
-        <div className="h-[calc(100vh-64px)] flex justify-center items-center">
+        <Container className="h-[calc(100vh-15rem)] flex justify-center items-center">
             <Card>
                 {
                     errors && (
-                        errors.map(err => (
-                            <p className="bg-red-500 text-white p-2 text-center">{err}</p>
+                        errors.map((err, index) => (
+                            <p key={index} className="bg-red-500 text-white p-2 text-center">{err}</p>
                         ))
                     )
                 }
@@ -47,7 +47,7 @@ function LoginPage() {
                     </div>
                 </form>
             </Card>
-        </div>
+        </Container>
     )
 }
 
