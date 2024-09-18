@@ -44,11 +44,11 @@ export const getTask = async (req, res) => {
     return res.json(result.rows[0])
 }
 
-export const updateTask = async (req, res) => {
+export const updateTask = async (req, res, next) => {
     try {
         const result = await pool.query(
             'UPDATE task SET title = $1, description = $2 WHERE id = $3 RETURNING *',
-            [req.body.title, req.req.description, req.params.id]
+            [req.body.title, req.body.description, req.params.id]
         );
 
         if (result.rowCount === 0) {
